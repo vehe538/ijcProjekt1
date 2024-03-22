@@ -1,9 +1,7 @@
-//#include "bitset.h"
 #include <stdio.h>
 #include <math.h>
-#include "bitset.c"
 
-void Eratosthenes(bitset_t pole) {
+void Eratosthenes() {
 
     int n = 10000;
     int m = 0;
@@ -29,12 +27,24 @@ void Eratosthenes(bitset_t pole) {
 
     for (int i = 0; i < n; i++){
         if (all[i] != 0){
-            primes[m] = all[i];
-            printf("%d, ", primes[m]);
-            m++;
+            primes[m] = all[i];          
+	    m++;
         }
     }
 
-    return 0;
+    for (int j = m-10; j < m; j++){
+    
+	    printf("%d\n", primes[j]);
+    
+    }
+
+    
+}
+
+int main(){
+
+	
+	Eratosthenes();
+
 }
 
