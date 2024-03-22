@@ -1,11 +1,18 @@
 #include <stdio.h>
+#include "bitset.h"
+
+inline void bitset_create(char *arr_name, unsigned long size){
 
 
-inline void bitset_create(unsigned long arr_name[], int size){
+    unsigned long array[size];
 
-    arr_name[size] = {0};
-    arr_name[0] = size;
-    //printf("%s = pole %d bitov, vynulovane\n", arr_name, size);
+    for (unsigned long i = 0; i < size; i++){
+
+        array[i] = 0;
+
+    }
 
 } 
+
+
 

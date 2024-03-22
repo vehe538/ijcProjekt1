@@ -1,10 +1,16 @@
 #include <stdio.h>
 #include <math.h>
 
+//#include "bitset.h"
+//#include "bitset_create.h"
+
+
 void Eratosthenes() {
 
-    int n = 10000;
-    int m = 0;
+
+    //bitset_fill(bitset_t, 1);
+    int n = 1000;
+
     int all[n];
     int primes[n];
 
@@ -25,6 +31,7 @@ void Eratosthenes() {
         
     }
 
+    int m = 0;
     for (int i = 0; i < n; i++){
         if (all[i] != 0){
             primes[m] = all[i];          
@@ -39,12 +46,5 @@ void Eratosthenes() {
     }
 
     
-}
-
-int main(){
-
-	
-	Eratosthenes();
-
 }
 
