@@ -1,8 +1,9 @@
 //#include "bitset.h"
 #include <stdio.h>
 #include <math.h>
+#include "bitset.c"
 
-int main () {
+void Eratosthenes(bitset_t pole) {
 
     int n = 10000;
     int m = 0;
