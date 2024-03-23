@@ -1,14 +1,15 @@
 #include <stdio.h>
-#include "bitset.h"
-
-inline void bitset_create(char *arr_name, unsigned long size){
 
 
-    unsigned long array[size];
 
-    for (unsigned long i = 0; i < size; i++){
+inline void bitset_create(unsigned long arr_name[], unsigned long size){
 
-        array[i] = 0;
+
+    arr_name[0] = size;
+
+    for (unsigned long i = 1; i < size; i++){
+
+        arr_name[i] = 0;
 
     }
 

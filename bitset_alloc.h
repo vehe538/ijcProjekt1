@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern inline void bitset_create(unsigned long arr_name[], int size);
+//#include "bitset_alloc.h"
 
-void inline bitset_alloc(char arr_name, int size){
 
-    
-    void *arr_name = malloc(size*(sizeof(int)));
+inline unsigned long *bitset_alloc(unsigned long arr_name[], unsigned long size){
 
-    if (arr_name == NULL){
+
+    unsigned long *ptr = (unsigned long *) malloc(sizeof(arr_name[0])+size*sizeof(unsigned long));
+
+    if (ptr == NULL){
         perror("bitset_alloc: Chyba alokace paměti\n");
     }
+    
+    return ptr;
 
 }

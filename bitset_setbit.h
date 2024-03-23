@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "bitset.h"
-#include <boolean.h>
+#include <stdbool.h>
 
-inline void bitset_setbit(char arr_name[], bitset_index_t x, bool tf){
+
+inline void bitset_setbit(unsigned long arr_name[], unsigned long x, bool tf){
 
 	if (tf == true){
 	

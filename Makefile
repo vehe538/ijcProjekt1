@@ -1,11 +1,12 @@
 CC=gcc
 
 
-eratosthenes: eratosthenes.c
-	$(CC) eratosthenes.c -o eratosthenes -lm
+all: primes.c
 
-bitset: bitset.c
-	$(CC) -g -std=c11 -pedantic -Wall -Wextra bitset.c -o bitset
-
+primes: primes.c
+	$(CC) -O2 -g -std=c11 -pedantic -Wall -Wextra primes.c -o primes
 
 
+
+clean:
+	rm -f all

@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct bitset_t{
-
-    unsigned long num : 1;
-
-}bitset_t;
+typedef unsigned long bitset_t[10000*sizeof(unsigned long)];
 
 typedef unsigned long bitset_index_t;

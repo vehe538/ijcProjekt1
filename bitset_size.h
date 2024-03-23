@@ -2,9 +2,8 @@
 #include <stdlib.h>
 
 
-inline unsigned long bitset_size(char arr_name[]){
+inline unsigned long bitset_size(unsigned long arr_name[]){
 
 	return arr_name[0];
-
 
 }

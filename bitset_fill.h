@@ -3,15 +3,9 @@
 #include <stdbool.h>
 
 
-#include "bitset.h"
+inline void bitset_fill(unsigned long arr_name[], bool tf) {
 
-
-extern inline unsigned long bitset_size(char *arr_name);
-
-
-inline unsigned long bitset_fill(char *arr_name, bool tf) {
-
-	unsigned long n = bitset_size(arr_name);
+	unsigned long n = 100;
 		
 	for (unsigned long i = 0; i < n; i++){
 		

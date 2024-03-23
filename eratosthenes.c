@@ -1,50 +1,42 @@
 #include <stdio.h>
 #include <math.h>
 
-//#include "bitset.h"
-//#include "bitset_create.h"
+#include "bitset.h"
+#include "bitset.c"
 
 
-void Eratosthenes() {
+void Eratosthenes(bitset_t arr) {
 
 
-    //bitset_fill(bitset_t, 1);
-    int n = 1000;
 
-    int all[n];
-    int primes[n];
+    bitset_create(arr, 10000);
+    unsigned long *ptr = bitset_alloc(arr, 10000);
+    unsigned long n = bitset_size(arr);
 
-    int c = 0;
-    for (int i = 2; i <= n; i++){
-        all[c] = i;
-        c++;
-    }
+    bitset_fill(arr, 1);
+    bitset_setbit(arr, 0, 0);
+    bitset_setbit(arr, 1, 0);
 
-    c = 0;
-    for (int j = 2; j <= n; j++){
-        for (int c = 0; c < n; c++){
-            if (all[c] != j && all[c] % j == 0 && all[c] != 0){
-                all[c] = 0;
+    //printf("%ld\n", arr[0]);
+
+    //unsigned long n = bitset_size(arr);
+
+    for (unsigned long j = 2; j <= n; j++){
+
+        if (arr[j] == 1){
+            printf("%lu\n", j);
+        } 
+
+        for (unsigned long k = j+1; k < n; k++){
+            if (k % j == 0 && arr[k] != 0){
+                arr[k] = 0;
 
             }
         }
+
         
     }
-
-    int m = 0;
-    for (int i = 0; i < n; i++){
-        if (all[i] != 0){
-            primes[m] = all[i];          
-	    m++;
-        }
-    }
-
-    for (int j = m-10; j < m; j++){
-    
-	    printf("%d\n", primes[j]);
-    
-    }
-
+    bitset_free(ptr);
     
 }
 
