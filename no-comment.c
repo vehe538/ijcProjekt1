@@ -19,20 +19,38 @@ int main(int argc, char *argv[]){
 		FILE *f = fopen("file.c", "r");
 
 
-		int n;
+		int state = 1;
 		char ch;
 
 		//char current_char;
 		//int num_of_lines;
-		while (ch != EOF){
+		while ((ch = fgetc(f)) != EOF){
 
-			ch = fgetc(f);
+			switch (state) {
 
-			switch (ch) {
+				case 1:
+					if (ch == '/'){
+						state = 2;
+					} else {
+						printf("%c", ch);
+						continue;
+					}
+					
+				case 2:
+					if (ch == '/'){
+						state = 3;
+					}
+					else {
+						printf("%c", ch);
+						continue;
+					}
 
-				case '/':
-					printf("%c", ch);
 
+				case 3:
+					if (ch == '\n'){
+						state = 1;
+					}
+				
 			}
 		}
 

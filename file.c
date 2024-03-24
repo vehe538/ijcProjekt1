@@ -5,11 +5,9 @@
 int main(){				//main
 
 
-	printf("Dobry vecer\n");        //toto je print
+	printf("Dobry vecer\n");       
 
 
-	return 0;		/*multiline 
-					hehehe
-					ejfefefegrhtreh*/
+	return 0;		
 
 }
