@@ -1,11 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+
+#include "error.h"
 
 
-int main(int argc, char *argv[]){
+extern void error_exit(const char *fmt, ...);
 
-	printf("%d\n", argc);
+
+
+int main(int argc, char *argv[]){	
+
 
 	if (argc == 0){
 
@@ -14,51 +20,78 @@ int main(int argc, char *argv[]){
 
 	} else {
 		
-		printf("%s\n", argv[1]);
 
-		FILE *f = fopen("file.c", "r");
+		FILE *f = fopen(argv[1], "r");
+		
+		if (f == NULL){
+			error_exit("error: invalid file.");
+		}
 
 
 		int state = 1;
 		char ch;
 
-		//char current_char;
-		//int num_of_lines;
 		while ((ch = fgetc(f)) != EOF){
 
 			switch (state) {
 
 				case 1:
-					if (ch == '/'){
+					if (ch == '/'){   //hladam prvy '/'
 						state = 2;
+					} else if (ch == '"') { // hladam prve '"'
+						printf("%c", ch);
+						state = 6;
 					} else {
 						printf("%c", ch);
-						continue;
 					}
-					
+					break;
+
 				case 2:
-					if (ch == '/'){
+					if (ch == '/'){    // hladam druhy '/' pre jednoriadkove komentare
 						state = 3;
-					}
-					else {
+					} else if ( ch == '*'){   // hladam '*' pre viacriadkove komentare
+						state = 4;
+					} else {
 						printf("%c", ch);
-						continue;
-					}
-
-
-				case 3:
-					if (ch == '\n'){
 						state = 1;
 					}
-				
+					break;
+
+				case 3:
+					if (ch == '\n'){  // hladam koniec riadku pre ukoncenie jednoriadkovych kom.
+						state = 1;
+					} else {
+						printf(" ");
+					}
+					break;
+
+				case 4:
+					if (ch == '*') {   // hladam druhe '*' pre ukoncenie viacriadkovych kom.
+						state = 5;
+					}
+					break;
+
+				case 5:
+					if (ch == '/'){   // hladam druhe '/' pre ukoncenie viacriadkovych kom.
+						state = 1;
+					}
+					break;
+
+				case 6:		// kym nenajdem druhe ", vypisujem vsetko
+					if (ch == '"') {
+						printf("%c", ch);
+						state = 1;
+					} else {
+						printf("%c", ch);
+					}
+					break;
+
+				default:
+					break;			
 			}
 		}
-
-		//printf("number of lines in the file: %d\n", num_of_lines);
-
 		fclose(f);
-	}
 	
-	return 0;
-
+	}
 }
+

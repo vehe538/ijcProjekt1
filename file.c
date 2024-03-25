@@ -5,7 +5,8 @@
 int main(){				//main
 
 
-	printf("Dobry vecer\n");       
+	printf("Dobry vecer\n");       /* viacriadkovy
+				 komentra */
 
 
 	return 0;		
