@@ -1,3 +1,9 @@
+// error.c
+// Řešení IJC-DU1, příklad b), 25.3.2024
+// Autor: Juraj Mesík, FIT
+// Přeloženo: gcc version 11.4.0
+
+
 #include <stdio.h>
 #include "error.h"
 
