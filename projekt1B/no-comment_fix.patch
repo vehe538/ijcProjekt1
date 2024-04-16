@@ -1,0 +1,11 @@
+--- no-comment.c	2024-04-16 15:46:35.652484800 +0200
++++ no-commentFIXED.c	2024-04-16 15:46:58.462483974 +0200
+@@ -12,7 +12,7 @@
+ #include <sys/stat.h>
+ #include "error.h"
+ 
+-#define SIZEOF_INPUT 100
++#define SIZEOF_INPUT 100000
+ #define MY_FSA(ch, state) \
+     do { \
+         switch (state) { \
